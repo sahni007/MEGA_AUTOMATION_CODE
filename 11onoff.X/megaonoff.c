@@ -2,7 +2,7 @@
  * File:   only_on_off.c
  * Author: Varun sahni
  *client: test
- * module: this is working code for 8 switches on and off only manul and application
+ * module: this is working code for 11 switches on and off only manul and application
  */
 
 #include <stdio.h>
@@ -43,9 +43,9 @@
 #define OUTPUT_RELAY6 PORTAbits.RA1
 #define OUTPUT_RELAY7 PORTAbits.RA2
 #define OUTPUT_RELAY8 PORTBbits.RB3
-//#define OUTPUT_RELAY9 PORTAbits.RA5
-//#define OUTPUT_RELAY10 PORTCbits.RC0
-//#define OUTPUT_RELAY11 PORTFbits.RF0
+#define OUTPUT_RELAY9 PORTAbits.RA5
+#define OUTPUT_RELAY10 PORTCbits.RC0
+#define OUTPUT_RELAY11 PORTFbits.RF0
 
 
 #define OUTPUT_RELAY_DIR_1 TRISBbits.TRISB1
@@ -56,8 +56,9 @@
 #define OUTPUT_RELAY_DIR_6 TRISAbits.TRISA1
 #define OUTPUT_RELAY_DIR_7 TRISAbits.TRISA2
 #define OUTPUT_RELAY_DIR_8 TRISBbits.TRISB3
-//#define OUTPUT_RELAY_DIR_9 TRISAbits.TRISA5
-
+#define OUTPUT_RELAY_DIR_9 TRISAbits.TRISA5
+#define OUTPUT_RELAY_DIR_10 TRISCbits.TRISC0
+#define OUTPUT_RELAY_DIR_11 TRISFbits.TRISF0
 
 
 #define INPUTSWITCH1 RF2
@@ -68,9 +69,9 @@
 #define INPUTSWITCH6 RD7
 #define INPUTSWITCH7 RD6
 #define INPUTSWITCH8 RD5
-//#define INPUTSWITCH9 RD4
-//#define INPUTSWITCH10 RD3
-//#define INPUTSWITCH11 RD2
+#define INPUTSWITCH9 RD4
+#define INPUTSWITCH10 RD3
+#define INPUTSWITCH11 RD2
 
 
 #define INPUT_SWITCH_DIR_1 TRISFbits.TRISF2
@@ -81,9 +82,9 @@
 #define INPUT_SWITCH_DIR_6 TRISDbits.TRISD7
 #define INPUT_SWITCH_DIR_7 TRISDbits.TRISD6
 #define INPUT_SWITCH_DIR_8 TRISDbits.TRISD5
-//#define INPUT_SWITCH_DIR_9 TRISDbits.TRISD4
-//#define INPUT_SWITCH_DIR_10 TRISDbits.TRISD3
-//#define INPUT_SWITCH_DIR_11 TRISDbits.TRISD2
+#define INPUT_SWITCH_DIR_9 TRISDbits.TRISD4
+#define INPUT_SWITCH_DIR_10 TRISDbits.TRISD3
+#define INPUT_SWITCH_DIR_11 TRISDbits.TRISD2
 
 
 // direction of PWM OUTPUT to MOC3021
@@ -485,142 +486,142 @@ int main() {
         }
 #endif  
        
-// #ifdef SWITCH_8_RELAY   
-//       //off condition
-//         if(copy_parentalLockBuffer[8] == CHAR_OFF && INPUTSWITCH8 == OFF && M8 == OFF)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '8';__delay_ms(1);
-//             OUTPUT_RELAY8=OFF;
-//             }
-//             man=0;
-//             M8=1;
+#ifdef SWITCH_8_RELAY   
+       //off condition
+        if(copy_parentalLockBuffer[8] == CHAR_OFF && INPUTSWITCH8 == OFF && M8 == OFF)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '8';__delay_ms(1);
+            OUTPUT_RELAY8=OFF;
+            }
+            man=0;
+            M8=1;
             
-//         }
-//         //on condtion
-//         if(copy_parentalLockBuffer[8] == CHAR_OFF && INPUTSWITCH8 == ON && M8 == ON)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '8';__delay_ms(1);
-//             OUTPUT_RELAY8=ON;
-//             }
-//             man=0;
-//             M8=0;
+        }
+        //on condtion
+        if(copy_parentalLockBuffer[8] == CHAR_OFF && INPUTSWITCH8 == ON && M8 == ON)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '8';__delay_ms(1);
+            OUTPUT_RELAY8=ON;
+            }
+            man=0;
+            M8=0;
            
-//         }
-// #endif   
-//       #ifdef SWITCH_9_RELAY   
-//       //off condition
-//         if(copy_parentalLockBuffer[9] == CHAR_OFF && INPUTSWITCH9 == OFF && M9 == OFF)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '9';__delay_ms(1);
-//             OUTPUT_RELAY9=OFF;
-//             }
-//             man=0;
-//             M9=1;
+        }
+#endif   
+       #ifdef SWITCH_9_RELAY   
+       //off condition
+        if(copy_parentalLockBuffer[9] == CHAR_OFF && INPUTSWITCH9 == OFF && M9 == OFF)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '9';__delay_ms(1);
+            OUTPUT_RELAY9=OFF;
+            }
+            man=0;
+            M9=1;
             
-//         }
-//         //on condtion
-//         if(copy_parentalLockBuffer[9] == CHAR_OFF && INPUTSWITCH9 == ON && M9 == ON)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '9';__delay_ms(1);
-//             OUTPUT_RELAY9=ON;
-//             }
-//             man=0;
-//             M9=0;
+        }
+        //on condtion
+        if(copy_parentalLockBuffer[9] == CHAR_OFF && INPUTSWITCH9 == ON && M9 == ON)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '9';__delay_ms(1);
+            OUTPUT_RELAY9=ON;
+            }
+            man=0;
+            M9=0;
            
-//         }
-// #endif 
-//       #ifdef SWITCH_10_RELAY   
-//       //off condition
-//         if(copy_parentalLockBuffer[10] == CHAR_OFF && INPUTSWITCH10 == OFF && M10 == OFF)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             OUTPUT_RELAY10=OFF;
-//             }
-//             man=0;
-//             M10=1;
+        }
+#endif 
+       #ifdef SWITCH_10_RELAY   
+       //off condition
+        if(copy_parentalLockBuffer[10] == CHAR_OFF && INPUTSWITCH10 == OFF && M10 == OFF)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            OUTPUT_RELAY10=OFF;
+            }
+            man=0;
+            M10=1;
             
-//         }
-//         //on condtion
-//         if(copy_parentalLockBuffer[10] == CHAR_OFF && INPUTSWITCH10 == ON && M10 == ON)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             OUTPUT_RELAY10=ON;
-//             }
-//             man=0;
-//             M10=0;
+        }
+        //on condtion
+        if(copy_parentalLockBuffer[10] == CHAR_OFF && INPUTSWITCH10 == ON && M10 == ON)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            OUTPUT_RELAY10=ON;
+            }
+            man=0;
+            M10=0;
            
-//         }
-// #endif 
-//               #ifdef SWITCH_11_RELAY   
-//       //off condition
-//         if(copy_parentalLockBuffer[11] == CHAR_OFF && INPUTSWITCH11 == OFF && M11 == OFF)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '0';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             OUTPUT_RELAY11=OFF;
-//             }
-//             man=0;
-//             M11=1;
+        }
+#endif 
+              #ifdef SWITCH_11_RELAY   
+       //off condition
+        if(copy_parentalLockBuffer[11] == CHAR_OFF && INPUTSWITCH11 == OFF && M11 == OFF)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '0';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            OUTPUT_RELAY11=OFF;
+            }
+            man=0;
+            M11=1;
             
-//         }
-//         //on condtion
-//         if(copy_parentalLockBuffer[11] == CHAR_OFF && INPUTSWITCH11 == ON && M11 == ON)
-//         {
-//             if(man==1)
-//             {
-//             __delay_ms(5);
-//             TX1REG = 'R';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             TX1REG = '1';__delay_ms(1);
-//             OUTPUT_RELAY11=ON;
-//             }
-//             man=0;
-//             M11=0;
+        }
+        //on condtion
+        if(copy_parentalLockBuffer[11] == CHAR_OFF && INPUTSWITCH11 == ON && M11 == ON)
+        {
+            if(man==1)
+            {
+            __delay_ms(5);
+            TX1REG = 'R';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            TX1REG = '1';__delay_ms(1);
+            OUTPUT_RELAY11=ON;
+            }
+            man=0;
+            M11=0;
            
-//         }
-// #endif 
+        }
+#endif 
     }    
 }
 
@@ -709,24 +710,24 @@ void applianceControl(char charSwitchMSB, char charSwitchLSB, char charSwitchSTA
             OUTPUT_RELAY8 = integerSwitchState;
         }break; 
 #endif      
-//         #ifdef SWITCH_9_RELAY        
-//         case 9:
-//         {
-//             OUTPUT_RELAY9 = integerSwitchState;
-//         }break; 
-// #endif  
-//         #ifdef SWITCH_10_RELAY        
-//         case 10:
-//         {
-//             OUTPUT_RELAY10 = integerSwitchState;
-//         }break; 
-// #endif  
-//         #ifdef SWITCH_11_RELAY        
-//         case 11:
-//         {
-//             OUTPUT_RELAY11 = integerSwitchState;
-//         }break; 
-// #endif 
+        #ifdef SWITCH_9_RELAY        
+        case 9:
+        {
+            OUTPUT_RELAY9 = integerSwitchState;
+        }break; 
+#endif  
+        #ifdef SWITCH_10_RELAY        
+        case 10:
+        {
+            OUTPUT_RELAY10 = integerSwitchState;
+        }break; 
+#endif  
+        #ifdef SWITCH_11_RELAY        
+        case 11:
+        {
+            OUTPUT_RELAY11 = integerSwitchState;
+        }break; 
+#endif 
             default:
             break;
         }
@@ -748,9 +749,9 @@ void GPIO_pin_Initialize(){
     INPUT_SWITCH_DIR_6 = 1;
     INPUT_SWITCH_DIR_7 = 1;
     INPUT_SWITCH_DIR_8 = 1;
-    // INPUT_SWITCH_DIR_9=1;
-    // INPUT_SWITCH_DIR_10=1;
-    // INPUT_SWITCH_DIR_11=1;
+    INPUT_SWITCH_DIR_9=1;
+    INPUT_SWITCH_DIR_10=1;
+    INPUT_SWITCH_DIR_11=1;
    
     
     OUTPUT_RELAY_DIR_1 = 0;
@@ -761,9 +762,9 @@ void GPIO_pin_Initialize(){
     OUTPUT_RELAY_DIR_6 = 0;
     OUTPUT_RELAY_DIR_7 = 0;
     OUTPUT_RELAY_DIR_8 = 0;
- //   OUTPUT_RELAY_DIR_9=0;
-  //  OUTPUT_RELAY_DIR_10=0;
-//    OUTPUT_RELAY_DIR_11=0;
+    OUTPUT_RELAY_DIR_9=0;
+    OUTPUT_RELAY_DIR_10=0;
+    OUTPUT_RELAY_DIR_11=0;
    
     
     // peripherals directions
@@ -912,5 +913,7 @@ void clearAllPorts(){
     OUTPUT_RELAY6=0;
     OUTPUT_RELAY7=0;
     OUTPUT_RELAY8=0;
-  
+    OUTPUT_RELAY9=0;
+    OUTPUT_RELAY10=0;
+    OUTPUT_RELAY11=0;
 }
